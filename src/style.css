@@ -7,6 +7,13 @@
     font-family: Ubuntu;
     src : url(font/Ubuntu-Regular.ttf)
 }
+
+.all{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Header */
 .header{
     width: 100%;
@@ -25,4 +32,19 @@
     margin: auto 10px;
     width: 40px;
     height: 40px;
+}
+
+/* Main */
+.main{
+    flex-grow: 1;
+}
+
+/* Footer */
+.footer{
+    background-color: #10ffe0;
+    display: flex;
+    justify-content: center;
+}
+.footer p{
+    padding: 10px;
 }
