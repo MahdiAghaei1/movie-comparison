@@ -16,7 +16,7 @@
 
 /* Header */
 .header{
-    width: 100%;
+    width: 100vw;
     height: 100px;
     background-color: #40e0d0;
     display:flex;
@@ -38,9 +38,36 @@
 .main{
     flex-grow: 1;
 }
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.boxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: 30px 50px;
+}
+.left{
+    justify-content: flex-start;
+}
+.right{
+    justify-content: flex-end;
+}
+.box input {
+    width: 94%;
+    height: 30px;
+    padding: 5px;
+}
+.box label {
+    font-size: 25px;
+    font-family: 'Ubuntu';
+}
 
 /* Footer */
 .footer{
+    width: 100vw;
     background-color: #10ffe0;
     display: flex;
     justify-content: center;
