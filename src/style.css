@@ -59,6 +59,8 @@
     width: 94%;
     height: 30px;
     padding: 5px;
+    font-family: 'Ubuntu';
+    font-size: 15px;
 }
 .box label {
     font-size: 25px;
@@ -74,4 +76,6 @@
 }
 .footer p{
     padding: 10px;
+    font-size: 22px;
+    font-family: 'Ubuntu';
 }
