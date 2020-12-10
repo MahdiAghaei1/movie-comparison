@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+@font-face{
+    font-family: Ubuntu;
+    src : url(font/Ubuntu-Regular.ttf)
+}
+/* Header */
+.header{
+    width: 100%;
+    height: 100px;
+    background-color: #40e0d0;
+    display:flex;
+    align-content: center;
+    /* align-items: center; */
+}
+.header-title{
+    font-family: 'Ubuntu';
+    font-size: 25px;
+    margin:auto 10px;
+}
+.header-img{
+    margin: auto 10px;
+    width: 40px;
+    height: 40px;
+}
