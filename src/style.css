@@ -67,6 +67,30 @@
     font-family: 'Ubuntu';
 }
 
+/* Drop Down List */
+.drop-down-list{
+    z-index: 1;
+    border: solid 1px #c0c0c0;
+    border-radius: 3%;
+    background-color: #fafafa;
+    margin-top: 1px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.movie-guess{
+    display: flex;
+    align-items: center;
+}
+.movie-img img{
+    margin: 5px;
+    width: 40px;
+    height: 60px;
+}
+.movie-title p{
+    font-family: 'Ubuntu';
+    margin: 5px;
+}
 /* Footer */
 .footer{
     width: 100vw;
