@@ -1,6 +1,4 @@
-//event listener => search
-
-const searchData = async (searchTerm) =>{ 
+const searchData = async (searchTerm , root) =>{ 
     await fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${searchTerm}`, 
     {
         "method": "GET",
@@ -12,7 +10,7 @@ const searchData = async (searchTerm) =>{
     .then((res)=> {
         res.json()
         .then((data) => {
-            makeDropDown(data.titles);
+            makeDropDown(data.titles , root);
         })
     })
     .catch(err => {
@@ -20,8 +18,7 @@ const searchData = async (searchTerm) =>{
     });
 };
 
-const makeDropDown = (guesses) => {
-    const mainDiv = document.querySelector('#one');
+const makeDropDown = (guesses,root) => {
     for(guess of guesses){
         let movieDiv = document.createElement('div');
         movieDiv.classList.add('movie-guess');
@@ -39,6 +36,31 @@ const makeDropDown = (guesses) => {
         titleDiv.appendChild(title);
         movieDiv.appendChild(imgDiv);
         movieDiv.appendChild(titleDiv);
-        mainDiv.appendChild(movieDiv);
+        root.appendChild(movieDiv);
     };
 };
+
+const leftInput = document.querySelector('#left-input');
+let timeOutIdOne;
+leftInput.addEventListener('input' , () => {
+    if (timeOutIdOne) {
+        clearTimeout(timeOutIdOne)
+    }
+    const leftDropDown = document.querySelector('#left-drop-down');
+    leftDropDown.innerHTML ='';
+    timeOutIdOne = setTimeout(() =>{
+        searchData(leftInput.value , leftDropDown)
+    } , 500);
+});
+const rightInput = document.querySelector('#right-input');
+let timeOutIdTwo;
+rightInput.addEventListener('input' , () => {
+    if (timeOutIdTwo) {
+        clearTimeout(timeOutIdTwo)
+    }
+    const rightDropDown = document.querySelector('#right-drop-down');
+    rightDropDown.innerHTML ='';
+    timeOutIdTwo = setTimeout(() =>{
+        searchData(rightInput.value , rightDropDown)
+    } , 500);
+});
