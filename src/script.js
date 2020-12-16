@@ -98,7 +98,36 @@ const makeDetails = (length , year , rating , votes , root) =>{
     h3.innerText = 'Length';
     p = document.createElement('p');
     p.innerText = length ;
-
+    summary.appendChild(h3);
+    summary.appendChild(p);
+    root.appendChild(summary);
+    
+    summary = document.createElement('div');
+    summary.classList.add('summary');
+    h3 = document.createElement('h3')
+    h3.innerText = 'Year';
+    p = document.createElement('p');
+    p.innerText = year ;
+    summary.appendChild(h3);
+    summary.appendChild(p);
+    root.appendChild(summary);
+    
+    summary = document.createElement('div');
+    summary.classList.add('summary');
+    h3 = document.createElement('h3')
+    h3.innerText = 'Rating';
+    p = document.createElement('p');
+    p.innerText = rating ;
+    summary.appendChild(h3);
+    summary.appendChild(p);
+    root.appendChild(summary);
+    
+    summary = document.createElement('div');
+    summary.classList.add('summary');
+    h3 = document.createElement('h3')
+    h3.innerText = 'Votes';
+    p = document.createElement('p');
+    p.innerText = votes ;
     summary.appendChild(h3);
     summary.appendChild(p);
     root.appendChild(summary);
