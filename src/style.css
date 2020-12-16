@@ -79,6 +79,9 @@
     display: flex;
     flex-direction: column;
 }
+.is-hide{
+    display: none;
+}
 .movie-guess{
     display: flex;
     align-items: center;

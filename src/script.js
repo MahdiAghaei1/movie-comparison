@@ -10,7 +10,7 @@ const searchData = async (searchTerm , root) =>{
     .then((res)=> {
         res.json()
         .then((data) => {
-            makeDropDown(data.titles , root , data.titles.id);
+            makeDropDown(data.titles , root);
         })
     })
     .catch(err => {
@@ -36,7 +36,7 @@ const searchId = async (id , root) => {
     });
 };
 
-const makeDropDown = (movies,root,id) => {
+const makeDropDown = (movies,root) => {
     for(movie of movies){
         let movieDiv = document.createElement('div');
         movieDiv.classList.add('movie-guess');
@@ -52,8 +52,11 @@ const makeDropDown = (movies,root,id) => {
 
         title.addEventListener('click' , (e) => {
             summaryDiv = e.path[3].nextElementSibling;
-            searchId(id , summaryDiv)
+            searchId(movie.id , summaryDiv)
+            dropDown = e.path[3];
+            dropDown.classList.add('is-hide')
         })
+
         imgDiv.appendChild(img);
         titleDiv.appendChild(title);
         movieDiv.appendChild(imgDiv);
@@ -69,9 +72,10 @@ leftInput.addEventListener('input' , () => {
         clearTimeout(timeOutIdOne)
     }
     const leftDropDown = document.querySelector('#left-drop-down');
-    leftDropDown.innerHTML ='';
     timeOutIdOne = setTimeout(() =>{
-        searchData(leftInput.value , leftDropDown)
+        leftDropDown.classList.add('drop-down-list');
+        leftDropDown.innerHTML ='';
+        searchData(leftInput.value , leftDropDown);
     } , 800);
 });
 const rightInput = document.querySelector('#right-input');
@@ -81,9 +85,10 @@ rightInput.addEventListener('input' , () => {
         clearTimeout(timeOutIdTwo)
     }
     const rightDropDown = document.querySelector('#right-drop-down');
-    rightDropDown.innerHTML ='';
     timeOutIdTwo = setTimeout(() =>{
-        searchData(rightInput.value , rightDropDown)
+        rightDropDown.classList.add('drop-down-list');
+        rightDropDown.innerHTML ='';
+        searchData(rightInput.value , rightDropDown);
     } , 800);
 });
 
