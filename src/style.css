@@ -92,6 +92,22 @@
     font-family: 'Ubuntu';
     margin: 5px;
 }
+
+/* Details */
+.right-details , .left-details{
+    display:flex;
+    flex-direction: column;
+}
+.summary{
+    border: solid 1px #80effa;
+    background-color: #87ceeb;
+    max-width: 550px;
+    margin: 5px 0;
+    padding: 5px;
+}
+.summary p , .summary h3 {
+    font-family: 'Ubuntu';
+}
 /* Footer */
 .footer{
     width: 100vw;
