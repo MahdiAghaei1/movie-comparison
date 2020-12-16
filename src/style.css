@@ -21,7 +21,6 @@
     background-color: #40e0d0;
     display:flex;
     align-content: center;
-    /* align-items: center; */
 }
 .header-title{
     font-family: 'Ubuntu';
@@ -110,17 +109,5 @@
     padding: 5px;
 }
 .summary p , .summary h3 {
-    font-family: 'Ubuntu';
-}
-/* Footer */
-.footer{
-    width: 100vw;
-    background-color: #10ffe0;
-    display: flex;
-    justify-content: center;
-}
-.footer p{
-    padding: 10px;
-    font-size: 22px;
     font-family: 'Ubuntu';
 }
