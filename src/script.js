@@ -10,7 +10,25 @@ const searchData = async (searchTerm , root) =>{
     .then((res)=> {
         res.json()
         .then((data) => {
-            makeDropDown(data.titles , root);
+            makeDropDown(data.titles , root , data.titles.id);
+        })
+    })
+    .catch(err => {
+        console.error(err);
+    });
+};
+const searchId = async (id , root) => {
+    await fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${id}`, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "da68d5ede2msha95623227f2eef2p100be1jsn899d7b581b72",
+            "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
+        }
+    })
+    .then((res) => {
+        res.json()
+        .then((data) => {
+            makeDetails(data.length , data.year , data.rating , data.rating_votes , root)
         })
     })
     .catch(err => {
@@ -18,8 +36,8 @@ const searchData = async (searchTerm , root) =>{
     });
 };
 
-const makeDropDown = (guesses,root) => {
-    for(guess of guesses){
+const makeDropDown = (movies,root,id) => {
+    for(movie of movies){
         let movieDiv = document.createElement('div');
         movieDiv.classList.add('movie-guess');
         let imgDiv = document.createElement('div');
@@ -28,10 +46,14 @@ const makeDropDown = (guesses,root) => {
         titleDiv.classList.add('movie-title');
 
         let img = document.createElement('img');
-        img.src = guess.image;
+        img.src = movie.image;
         let title = document.createElement('p');
-        title.innerText = guess.title;
+        title.innerText = movie.title;
 
+        title.addEventListener('click' , (e) => {
+            summaryDiv = e.path[3].nextElementSibling;
+            searchId(id , summaryDiv)
+        })
         imgDiv.appendChild(img);
         titleDiv.appendChild(title);
         movieDiv.appendChild(imgDiv);
@@ -50,7 +72,7 @@ leftInput.addEventListener('input' , () => {
     leftDropDown.innerHTML ='';
     timeOutIdOne = setTimeout(() =>{
         searchData(leftInput.value , leftDropDown)
-    } , 500);
+    } , 800);
 });
 const rightInput = document.querySelector('#right-input');
 let timeOutIdTwo;
@@ -62,5 +84,22 @@ rightInput.addEventListener('input' , () => {
     rightDropDown.innerHTML ='';
     timeOutIdTwo = setTimeout(() =>{
         searchData(rightInput.value , rightDropDown)
-    } , 500);
+    } , 800);
 });
+
+const makeDetails = (length , year , rating , votes , root) =>{
+    let summary;
+    let h3;
+    let p;
+
+    summary = document.createElement('div');
+    summary.classList.add('summary');
+    h3 = document.createElement('h3')
+    h3.innerText = 'Length';
+    p = document.createElement('p');
+    p.innerText = length ;
+
+    summary.appendChild(h3);
+    summary.appendChild(p);
+    root.appendChild(summary);
+};

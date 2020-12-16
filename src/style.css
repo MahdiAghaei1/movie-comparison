@@ -91,6 +91,7 @@
 .movie-title p{
     font-family: 'Ubuntu';
     margin: 5px;
+    cursor: pointer;
 }
 
 /* Details */
